@@ -1,7 +1,12 @@
-<!DOCTYPE html>
+<%@page import="model.UserDao"%>
+<%@page import="model.Addbooking"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>login</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>login</title>
    <style>
 
 ul {
@@ -120,8 +125,18 @@ button:hover{
 
 
 
-  </style></head>
+  </style>
+</head>
 <body>
+  <%
+      	int pId=Integer.parseInt(request.getParameter("pId"));
+
+try
+{
+	
+	  Addbooking p = new UserDao().updateBooking(pId);
+      	
+%>
 <div class="navbar">
 <ul>
   <li><a href="index.html">Home</a></li>
@@ -136,20 +151,26 @@ button:hover{
 		<input type="checkbox" id="chk" aria-hidden="true">
 			
 			<div class="signup">
-				<form action="Addbooking.jsp" method="post">
-					<label for="chk" aria-hidden="true">Sign up</label>
-					<input type="text" name="username" placeholder="user name" required/>
-					<input type="text" name="name" placeholder="name" required/>
-					<input type="text" name="service" placeholder="service" required/>
-					<input type="text" name="date" placeholder="date" required/>
-					<input type="text" name="price" placeholder="price" required/>
-					<input type="text" name="time" placeholder="time" required/>
+				<form action="UpdateBookingData.jsp" method="post">
+					<label for="chk" aria-hidden="true">Update Booking</label>
+					<input type="text" name="username" placeholder="user name" value="<%=p.getUsername() %>"required/>
+					<input type="text" name="name" placeholder="name"value="<%=p.getName() %>" required/>
+					<input type="text" name="service" placeholder="service"value="<%=p.getService() %>" required/>
+					<input type="text" name="date" placeholder="date" value="<%=p.getDate() %>"required/>
+					<input type="text" name="price" placeholder="price"value=<%= p.getPrice()%> required/>
+					<input type="text" name="time" placeholder="time"value=<%=p.getTime()%> required/>
+					<input type ="hidden" name="bid" value=<%=p.getBid() %> required/>
 					
-					
-					<button>Sign up</button>
+					<button>Submit</button>
 				</form>
 			</div>
-
+<%
+     }
+    catch(Exception e)
+    {
+    	out.print("error : "+e);
+    }
+    %>
 	</div>
 </body>
 </html>

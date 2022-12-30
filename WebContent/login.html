@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>login</title>
-   <style>
+	   <style>
 
 ul {
   list-style-type: none;
@@ -37,7 +37,7 @@ li a:hover:not(.active) {
 
 	
 	width: 1350px;
-	height: 510px;
+	height: 590px;
 	background: red;
 	overflow: hidden;
 	background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
@@ -52,7 +52,7 @@ li a:hover:not(.active) {
 
 	position: relative;
 	width:100%;
-	height: 100%;
+	height: 95%;
 }
 label{
 	color: #ff2e46;
@@ -97,7 +97,7 @@ button:hover{
 	background: #6d44b8;
 }
 .login{
-	height: 460px;
+	height: 650px;
 	background: #ff2e46;
 	border-radius: 60% / 10%;
 	transform: translateY(-180px);
@@ -117,6 +117,92 @@ button:hover{
 #chk:checked ~ .signup label{
 	transform: scale(.6);
 }
+
+
+<!-- --------------------------------------------------------------------------------------------------------------------------- -->
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Lato:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+
+.wrapper{
+  display: inline-flex;
+  background: #fff;
+  height: 60px;
+  width: 300px;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  padding: 20px 15px;
+  box-shadow: 5px 5px 30px rgba(0,0,0,0.2);
+}
+.wrapper .option{
+  background: #fff;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0 10px;
+  border: 2px solid lightgrey;
+  transition: all 0.3s ease;
+}
+.wrapper .option .dot{
+  height: 20px;
+  width: 20px;
+  background: #d9d9d9;
+  border-radius: 50%;
+  position: relative;
+}
+.wrapper .option .dot::before{
+  position: absolute;
+  content: "";
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  background: #0069d9;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(1.5);
+  transition: all 0.3s ease;
+}
+input[type="radio"]{
+  display: none;
+}
+#option-1:checked:checked ~ .option-1,
+#option-2:checked:checked ~ .option-2{
+  border-color: #0069d9;
+  background: #0069d9;
+}
+#option-1:checked:checked ~ .option-1 .dot,
+#option-2:checked:checked ~ .option-2 .dot{
+  background: #fff;
+}
+#option-1:checked:checked ~ .option-1 .dot::before,
+#option-2:checked:checked ~ .option-2 .dot::before{
+  opacity: 1;
+  transform: scale(1);
+}
+.wrapper .option span{
+  font-size: 20px;
+  color: #808080;
+}
+#option-1:checked:checked ~ .option-1 span,
+#option-2:checked:checked ~ .option-2 span{
+  color: #fff;
+}
+
+
 
 
 
@@ -147,9 +233,24 @@ button:hover{
 				</form>
 			</div>
 
+
 			<div class="login">
 				<form action="login.jsp" method="post">
+			
 					<label for="chk" aria-hidden="true">Login</label>
+					
+					<div class="wrapper">
+                <input type="radio" name="radio" id="option-1" value="1"checked>
+ 				<input type="radio" name="radio" id="option-2" value="2">
+   				<label for="option-1" class="option option-1">
+    			<div class="dot"></div>
+     			 <span>Customer</span>
+     			 </label>
+   				<label for="option-2" class="option option-2">
+   				  <div class="dot"></div>
+    			  <span>Admin</span>
+   					</label>
+			</div>
 					<input type="text" name="uname" placeholder="username" required/>
 					<input type="password" name="upass" placeholder="Password" required/>
 					<button>Login</button>

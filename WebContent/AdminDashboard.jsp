@@ -1,8 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<%@page import="model.Addbooking"%>
+<%@page import="java.util.List"%>
+<%@page import="model.UserDao"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-    <meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Admin Dashboard</title>
+<meta charset="utf-8">
     <title>DarkPan - Bootstrap 5 Admin Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
@@ -29,8 +35,6 @@
 
     <!-- Template Stylesheet -->
     <link href="css2/style.css" rel="stylesheet">
-</head>
-
 <body>
     <div class="container-fluid position-relative d-flex p-0">
         <!-- Spinner Start -->
@@ -137,7 +141,7 @@
                                 </div>
                             </a>
                             <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all message</a>
+                            <a href="#" class="dropdown-item text-center">See all message</a><a  href="logout.jsp">LogOut</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
@@ -172,7 +176,7 @@
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">My Profile</a>
                             <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
+                            <a href="logout.jsp" class="dropdown-item">Log Out</a>       
                         </div>
                     </div>
                 </div>
@@ -224,98 +228,74 @@
             <!-- Sale & Revenue End -->
 
 
-            <!-- Sales Chart Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary text-center rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Worldwide Sales</h6>
-                                <a href="">Show All</a>
-                            </div>
-                            <canvas id="worldwide-sales"></canvas>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary text-center rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Salse & Revenue</h6>
-                                <a href="">Show All</a>
-                            </div>
-                            <canvas id="salse-revenue"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Sales Chart End -->
+         
 
 
             <!-- Recent Sales Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Recent Salse</h6>
-                        <a href="">Show All</a>
+                        <h6 class="mb-0">All Booking</h6>
+                        <a class="btn btn-sm btn-primary" href="AddBooking.html">ADD Bookings</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
                                 <tr class="text-white">
-                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Username</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Service</th>
                                     <th scope="col">Date</th>
-                                    <th scope="col">Invoice</th>
-                                    <th scope="col">Customer</th>
-                                    <th scope="col">Amount</th>
-                                    <th scope="col">Status</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Time</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
+                       <%
+                UserDao db = new UserDao();
+               // String Username=request.getParameter("uname");
+
+               String uname =(String)session.getAttribute("uname");
+               
+                List<Addbooking> ul= db.viewAllBooking();
+                
+                for(Addbooking u:ul)
+                {
+                
+                %>
+                     <tr>
+                     <td>
+                    <%=u.getBid() %>
+                    </td>
+                    <td>
+                    <%=u.getUsername() %>
+                    </td>
+                    <td>
+                    <%=u.getName() %>
+                    </td>
+                    <td>
+                    <%=u.getService() %>
+                    </td>
+                    <td>
+                    <%=u.getDate() %>
+                    </td>
+                    <td>
+                    <%=u.getPrice() %>
+                    </td>
+                    <td>
+                    <%=u.getTime() %>
+                    </td>
+                    <td>
+                          <a class="btn btn-sm btn-primary" href="UpdateBooking.jsp?pId=<%=u.getBid()%>">Update</a>
+                          <a class="btn btn-sm btn-primary" href="DeleteBooking.jsp?pId=<%=u.getBid()%>">Trash</a>
+                    </td>
+                    </tr>
+                  <%
+                }
+                  %>
+                  
                             </tbody>
                         </table>
                     </div>
@@ -483,6 +463,6 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-</body>
 
+</body>
 </html>
