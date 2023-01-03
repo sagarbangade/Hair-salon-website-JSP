@@ -154,7 +154,7 @@ String time =(String)session.getAttribute("time");
 					<input type="text" name="username" placeholder="user name" value=<%=username %> required/>
 					<input type="text" name="name" placeholder="name" value=<%=name %> required/>
 					<input type="text" name="service" placeholder="service" value=<%=service %> required/>
-					<input type="text" name="date" placeholder="date" value=<%=date %> required/>
+					<input type="date" name="date" placeholder="date" value=<%=date %> required/>
 					<input type="text" name="price" placeholder="price" value=<%=price %> required/>
 					<input type="text" name="time" placeholder="time" value=<%=time %> required/>
 					
@@ -168,7 +168,7 @@ String time =(String)session.getAttribute("time");
 					<input type="text" name="username" placeholder="user name" required/>
 					<input type="text" name="name" placeholder="name"  required/>
 					<input type="text" name="service" placeholder="service"  required/>
-					<input type="text" name="date" placeholder="date"   required/>
+					<input type="date" name="date" placeholder="date"   required/>
 					<input type="text" name="price" placeholder="price"   required/>
 					<input type="text" name="time" placeholder="time"  required/>
 					
