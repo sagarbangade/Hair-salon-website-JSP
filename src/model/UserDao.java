@@ -64,7 +64,7 @@ public class UserDao{
 			boolean a=rs.absolute(1);
 			return a;
 		}
-		public int addservice(Addbooking u) throws ClassNotFoundException, SQLException
+		public int addservice(Addbooking u) throws ClassNotFoundException, SQLException //user vala booking
 		{
 			con = getConnection();
 			String sql = "insert into addbooking(username, name, service, date, price, time) values(?,?,?,?,?,?)";
@@ -84,7 +84,7 @@ public class UserDao{
 		public java.util.List<Addbooking> viewAllBooking() throws ClassNotFoundException, SQLException
 		{
 			String sql="SELECT * FROM Addbooking";
-			PreparedStatement ps=getConnection().prepareStatement(sql);
+			PreparedStatement ps=getConnection().prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			ResultSet rs=ps.executeQuery();
 			
 			java.util.List<Addbooking> ul=new ArrayList<Addbooking>();
@@ -113,7 +113,7 @@ public class UserDao{
 		public java.util.List<Addbooking> viewUserBooking(String Username) throws ClassNotFoundException, SQLException
 		{
 			String sql="SELECT * FROM Addbooking WHERE Username=?";
-			PreparedStatement ps=getConnection().prepareStatement(sql);
+			PreparedStatement ps=getConnection().prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			ps.setString(1, Username);
 			ResultSet rs=ps.executeQuery();
 			
@@ -141,7 +141,7 @@ public class UserDao{
 		public int deleteBooking(int Bid) throws ClassNotFoundException, SQLException
 		{
 			String sql="delete FROM Addbooking where Bid=?";
-			PreparedStatement ps=getConnection().prepareStatement(sql);
+			PreparedStatement ps=getConnection().prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 		    ps.setInt(1, Bid);
 		
 			int a=ps.executeUpdate();
@@ -198,6 +198,19 @@ public class UserDao{
 			
 			ResultSet rs=ps.executeQuery();
 			boolean a=rs.absolute(1);
+			return a;
+		}
+		
+		public int AddServices(AddServices u) throws ClassNotFoundException, SQLException
+		{
+			con = getConnection();
+			String sql = "insert into services(name, price) values(?,?)";
+			PreparedStatement ps = con.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			ps.setString(1,u.getServiceName());
+			ps.setString(2,u.getServicePrice());
+			
+			
+			int a = ps.executeUpdate();	
 			return a;
 		}
 
